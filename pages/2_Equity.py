@@ -10,20 +10,25 @@ import plotly.express as px
 st.header("Significant Level Finder - Equity")
 
 # Get index list
-indices = nse.nse_eq_symbols()
+stock_list = nse.nse_eq_symbols()
+
 
 # Set initial inputs
-script = st.selectbox('Select Index',indices,index=0)
+script = st.selectbox('Select Index',stock_list,index=0)
 st.write("Select data window ")
 col11,col12 = st.columns(2)
-start_date = (col11.date_input("From").strftime(format="%d-%m-%Y"))
+start_date = str(col11.date_input("From").strftime(format="%d-%m-%Y"))
 end_date = str(col12.date_input("To").strftime(format="%d-%m-%Y"))
 
+
 # Get data downloaded
-df = nse.equity_history(script,
+df = nse.equity_history(symbol=script,
+                      series = "EQ",
                        start_date = start_date,
-                       end_date=end_date,
-                       series = "EQ")
+                       end_date=end_date
+                       )
+
+
 
 # Clean data
 df = df[['CH_TIMESTAMP','CH_TRADE_HIGH_PRICE','CH_TRADE_LOW_PRICE',

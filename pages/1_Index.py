@@ -20,7 +20,7 @@ start_date = str(col11.date_input("From"))
 end_date = str(col12.date_input("To"))
 
 # Get data downloaded
-df = nse.index_history(script,
+df = nse.index_history(symbol=script,
                        start_date = start_date,
                        end_date=end_date)
 
