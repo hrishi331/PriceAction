@@ -27,7 +27,7 @@ df = nse.equity_history(symbol=script,
                        end_date=end_date
                        )
 
-st.write(df)
+
 
 # Clean data
 df = df[['CH_TIMESTAMP','CH_TRADE_HIGH_PRICE','CH_TRADE_LOW_PRICE',

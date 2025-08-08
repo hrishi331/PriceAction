@@ -15,14 +15,14 @@ if st.button(label='For Indices >>'):
     st.switch_page(page='pages/1_Index.py')
 
 
-# text_2 = """
-# This gives you significant levels on selected equity chart for selected time frame.
-# By adjusting significance you can get levels from low to high significance.
-# You can select parameter of your choice from OLHC.  
-# """
-# st.write(text_2)
-# if st.button(label='For Equity >>'):
-#     st.switch_page(page='pages/2_Equity.py')
+text_2 = """
+This gives you significant levels on selected equity chart for selected time frame.
+By adjusting significance you can get levels from low to high significance.
+You can select parameter of your choice from OLHC.  
+"""
+st.write(text_2)
+if st.button(label='For Equity >>'):
+    st.switch_page(page='pages/2_Equity.py')
 
 
 text_3 = """
