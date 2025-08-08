@@ -17,9 +17,8 @@ stock_list = nse.nse_eq_symbols()
 script = st.selectbox('Select Index',stock_list,index=0)
 st.write("Select data window ")
 col11,col12 = st.columns(2)
-start_date = str(col11.date_input("From").strftime(format="%d-%m-%Y"))
-end_date = str(col12.date_input("To").strftime(format="%d-%m-%Y"))
-
+start_date = col11.date_input("From").strftime(format="%d-%m-%Y")
+end_date = col12.date_input("To").strftime(format="%d-%m-%Y")
 
 # Get data downloaded
 df = nse.equity_history(symbol=script,
@@ -28,7 +27,7 @@ df = nse.equity_history(symbol=script,
                        end_date=end_date
                        )
 
-
+st.write(df)
 
 # Clean data
 df = df[['CH_TIMESTAMP','CH_TRADE_HIGH_PRICE','CH_TRADE_LOW_PRICE',
