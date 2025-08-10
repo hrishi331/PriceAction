@@ -27,6 +27,7 @@ df = nse.index_history(symbol=script,
 # Clean data
 df = df[['HistoricalDate','OPEN','LOW','HIGH','CLOSE']] # select columns
 df.columns = ['Date','Open','Low','High','Close'] # change column names
+
 # Datatype transformation
 df['Date'] = pd.to_datetime(df['Date'])
 df['Close'] = df['Close'].astype(float)
@@ -37,7 +38,7 @@ df['Open'] = df['Open'].astype(float)
 df = df.set_index('Date') # Set index
 df['CloseOpenAvg'] = round((df['Close']+df['Open'])/2,2) # Feature addition
 
-# rounding to nearest 100
+# rounding to nearest 50
 # for i in df:
 #     df[i] = df[i]//100*100  
 
@@ -58,7 +59,7 @@ n = st.slider(label="Significance",
               help = text)
 
 
-data = (df[target]//100*100).value_counts()
+data = (df[target]//50*50).value_counts()
 data = data[data>n]
 levels = list(data.keys())
 strength = list(data.values)
